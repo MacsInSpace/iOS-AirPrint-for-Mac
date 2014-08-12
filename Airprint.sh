@@ -28,6 +28,9 @@ done
 for i in $printers; do
 Options=`cat /tmp/"$i"`
 ## Works but doesnt.. dns-sd -R "$i" _ipp._tcp,_universal . 631"$Options" | tr -d \'\\\\\(\)\" >> /tmp/output.log & sleep 1
+## A Bonjour browser shos them as advertised but with no "details"
+## Bonjour browser - http://www.tildesoft.com
+
 TheCommand=`dns-sd -R "$i" _ipp._tcp,_universal . 631"$Options" | tr -d \'\\\\\(\)\" >> /tmp/output.log & sleep 1`
 
 $TheCommand
