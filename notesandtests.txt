@@ -28,7 +28,9 @@ IFS=$SAVEIFS
 
 killall dns-sd
 
-
+Helpful links
+https://www.sit.auckland.ac.nz/Printing/Sharing_a_printer_to_iOS_from_MacOS
+http://hints.macworld.com/article.php?story=20101027080807322
 
 
 
