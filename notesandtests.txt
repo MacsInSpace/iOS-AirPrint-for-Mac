@@ -1,0 +1,108 @@
+
+ComputerName=`scutil --get ComputerName`
+dns-sd -B _ipp._tcp local | colrm 1 73 | grep -v 'Instance Name' | sort | uniq | grep ${ComputerName} > ST00447printerlist.txt & sleep 1 & killall dns-sd
+
+SAVEIFS=$IFS
+IFS=$(echo -en "\n\b")
+
+printers=`cat ST00447printerlist.txt`
+
+for i in $printers; do
+dns-sd -L "$i" _ipp._tcp local | grep 'product=' | tr -d \'\\\\\(\) | sed "s@pwg-raster@urf URF=W8,SRGB24,CP255,RS300@g" |  sed "s/$/ transparent=T binary=T/" | sed 's/note.*priority/note= priority/g' > /tmp/"$i" & sleep 0 &
+killall dns-sd
+done
+
+for i in $printers; do
+Options=`cat /tmp/"$i"`
+TheCommand=`dns-sd -R "$i" _ipp._tcp,_universal . 631"$Options" | tr -d \'\\\\\(\)\" >> output.log & sleep 1`
+
+$TheCommand
+
+done
+
+
+
+IFS=$SAVEIFS
+
+
+
+killall dns-sd
+
+
+
+
+
+
+
+
+
+
+sed -i 's/note=.*priority=/note= priority=/g'
+
+Options=`cat "/Users/****/Canon MP270 series @ MacbookPro"`
+dns-sd -R "Canon MP270 series @ MacbookPro" _ipp._tcp,_universal . 631${Options}
+
+
+
+dns-sd -R "Canon MP270 series @ MacbookPro" _ipp._tcp,_universal . 631 txtvers=1 qtotal=1 rp=printers/Canon_MP270_series ty=Unknown adminurl=https://MacbookPro.local.:631/printers/Canon_MP270_series note= priority=0 product=Canon MP270 series pdl=application/octet-stream,application/pdf,application/postscript,image/jpeg,image/png,image/urf URF=W8,SRGB24,CP255,RS300 UUID=2c7087de-2ab6-3770-7ebd-4c4ba18ceb7b TLS=1.2 Color=T Scan=T printer-state=3 printer-type=0x480900E transparent=T binary=T >> output.log & sleep 0 &
+
+
+
+
+
+
+dns-sd -R "Canon MP270 series @ MacbookPro" _ipp._tcp,_universal . 631 txtvers=1 qtotal=1 rp=printers/Canon_MP270_series ty=Unknown adminurl=https://MacbookPro.local.:631/printers/Canon_MP270_series note=Carolines AirPort TimeCapsule priority=0 product=Canon MP270 series pdl=application/octet-stream,application/pdf,application/postscript,image/jpeg,image/png,image/urf URF=W8,SRGB24,CP255,RS300 UUID=2c7087de-2ab6-3770-7ebd-4c4ba18ceb7b TLS=1.2 Color=T Scan=T printer-state=3 printer-type=0x480900E transparent=T binary=T
+
+
+
+dns-sd -R "Canon MP270 series @ MacbookPro" _ipp._tcp,_universal . 631 txtvers=1 qtotal=1 rp=printers/Canon_MP270_series ty=Unknown adminurl=https://MacbookPro.local.:631/printers/Canon_MP270_series note= priority=0 product=Canon MP270 series pdl=application/octet-stream,application/pdf,application/postscript,image/jpeg,image/png,image/urf URF=W8,SRGB24,CP255,RS300 UUID=2c7087de-2ab6-3770-7ebd-4c4ba18ceb7b TLS=1.2 Color=T Scan=T printer-state=3 printer-type=0x480900E transparent=T binary=T
+
+
+
+
+
+
+
+
+
+dns-sd -B _ipp._tcp local | colrm 1 73 | grep -v 'Instance Name' | sort | uniq | sed '/@/d' | sed "s/$/ @ ${ComputerName}/" > ST00447printerlist.txt & sleep 1 & killall dns-sd
+
+Working
+dns-sd -R "Canon MP270 series @ MacbookPro" _ipp._tcp,_universal . 631 txtvers=1 qtotal=1 rp=printers/Canon_MP270_series ty=Unknown adminurl=https://MacbookPro.local.:631/printers/Canon_MP270_series note= priority=0 product=\(Canon\ MP270\ series\) pdl=application/octet-stream,application/pdf,application/postscript,image/jpeg,image/png,image/urf URF=W8,SRGB24,CP255,RS300 UUID=2c7087de-2ab6-3770-7ebd-4c4ba18ceb7b TLS=1.2 Color=T Scan=T printer-state=3 printer-type=0x480900E transparent=T binary=T 
+
+
+dns-sd -R "Canon MP270 series @ MacbookPro" _ipp._tcp,_universal . 631 txtvers=1 qtotal=1 rp=printers/Canon_MP270_series ty=Unknown adminurl=https://MacbookPro.local.:631/printers/Canon_MP270_series note= priority=0 product=\(Canon\ MP270\ series\) transparent=T binary=T Fax=F Color=T pdl=application/octet-stream,application/pdf,application/postscript,image/jpeg,image/png,image/urf URF=W8,SRGB24,CP255,RS300
+
+
+
+
+
+dns-sd -L "$i" _ipp._tcp local | grep 'product=' | sed "s@\\@@g" | sed "s/'/ /g" | sed "s@pwg-raster@urf  URF=W8,SRGB24,CP255,RS300@g " > "$i".txt & sleep 1
+
+ sed "s@\\\\@@g" | sed "s@\(@\\"\(@g" | sed "s@\)@\\"\)@g" |
+sudo cat /private/etc/cups/printers.conf | grep "Info " | colrm 1 5 | sort | uniq | sed '/@/d' > ST00447printerlist.txt
+
+
+Options=`cat "/Users/craighair/Canon MP270 series @ MacbookPro"`
+dns-sd -R "Canon MP270 series @ MacbookPro" _ipp._tcp,_universal . 631 $Options
+
+working
+dns-sd -R "Canon MP270 series @ MacbookPro" _ipp._tcp,_universal . 631 \
+txtvers=1 qtotal=1 rp=printers/Canon_MP270_series \
+ty=Unknown adminurl="https://MacbookPro.local.:631/printers/Canon_MP270_series" note= \
+priority=0 product="(Canon MP270 series)" transparent=T binary=T \
+Fax=F Color=T \
+pdl=application/octet-stream,application/pdf,application/postscript,image/jpeg,image/png,image/urf \
+URF=W8,SRGB24,CP255,RS300 
+
+
+killall dns-sd
+
+orig
+dns-sd -R "The Printer" _ipp._tcp,_universal . 631 \
+txtvers=1 qtotal=1 rp=printers/Brother_DCP_J125 \
+ty="Brother DCP-J125 CUPS" adminurl= note=Downstairs \
+priority=0 product="(DCP-J125)" transparent=T binary=T \
+Fax=F Color=T \
+pdl=application/octet-stream,application/pdf,application/postscript,image/jpeg,image/png,image/urf \
+URF=W8,SRGB24,CP255,RS300 UUID=2c7087de-2ab6-3770-7ebd-4c4ba18ceb7b TLS=1.2 Color=T Scan=T printer-state=3 printer-type=0x480900E
