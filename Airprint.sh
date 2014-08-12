@@ -36,14 +36,3 @@ IFS=$SAVEIFS
 
 ## kills the processes
 #killall dns-sd
-#nqr - almost there
-
-## Working test command
-#dns-sd -R "Printer" _ipp._tcp,_universal . 631 \
-#txtvers=1 qtotal=1 rp=printers/Brother_DCP_J125 \
-#ty="HP CUPS" adminurl= note=Office \
-#priority=0 product="(HP1200)" transparent=T binary=T \
-#Fax=F Color=T \
-#pdl=application/octet-stream,application/pdf,application/postscript,image/jpeg,image/png,image/urf \
-#URF=W8,SRGB24,CP255,RS300 UUID=2c7087de-2ab6-2c7087de-2ab6-3770 TLS=1.2 Color=T Scan=T printer-state=3 printer-type=0x480900E
-
