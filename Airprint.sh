@@ -38,7 +38,7 @@ Options=`cat /tmp/"$i"`
 alias TheCommand="dns-sd -R "\"$i"\" _ipp._tcp,_universal . 631"${Options}"  >> /tmp/output.log & sleep 1" 
 
 TheCommand
-
+unalias TheCommand
 
 
 
