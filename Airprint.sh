@@ -24,6 +24,7 @@ killall dns-sd
 done
 
 
+#I made the following change overnight which seems to advertise them to a Bonjour browser but the ${Options} variable is now not being passed through.
 
 alias TheCommand="dns-sd -R "\"\$i"\" _ipp._tcp,_universal . 631"\${Options}" & unalias TheCommand"
 
