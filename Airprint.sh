@@ -25,7 +25,7 @@ done
 
 
 
-alias TheCommand="dns-sd -R "\"\$\i"\" _ipp._tcp,_universal . 631"\${Options}"& unalias TheCommand"
+alias TheCommand="dns-sd -R "\"\$i"\" _ipp._tcp,_universal . 631"\${Options}"& unalias TheCommand"
 
 for i in $printers; do
 Options=`cat "$i"`
