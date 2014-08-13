@@ -23,10 +23,30 @@ dns-sd -L "$i" _ipp._tcp local | grep 'product=' | tr -d \'\\\\\(\) | sed "s@pwg
 killall dns-sd
 done
 
+
+
+alias TheCommand="dns-sd -R "\"\$\i"\" _ipp._tcp,_universal . 631"\${Options}"& unalias TheCommand"
+
+for i in $printers; do
+Options=`cat "$i"`
+
+TheCommand 
+
+done
+
+
+
+IFS=$SAVEIFS
+
+
+
+
+
+
 ##NEEDS WORK!!
 ## For each printer, advertise via bonjour
-for i in $printers; do
-Options=`cat /tmp/"$i"`
+#for i in $printers; do
+#Options=`cat /tmp/"$i"`
 ## Works but doesnt.. dns-sd -R "$i" _ipp._tcp,_universal . 631"$Options" | tr -d \'\\\\\(\)\" >> /tmp/output.log & sleep 1
 ## A Bonjour browser shos them as advertised but with no "details"
 ## Bonjour browser - http://www.tildesoft.com
@@ -35,15 +55,15 @@ Options=`cat /tmp/"$i"`
 #$TheCommand
 
 
-alias TheCommand="dns-sd -R "\"$i"\" _ipp._tcp,_universal . 631"${Options}"  >> /tmp/output.log & sleep 1" 
+#alias TheCommand="dns-sd -R "\"$i"\" _ipp._tcp,_universal . 631"${Options}"  >> /tmp/output.log & sleep 1" 
 
-TheCommand
-unalias TheCommand
+#TheCommand
+#unalias TheCommand
 
 
 
-done
-IFS=$SAVEIFS
+#done
+#IFS=$SAVEIFS
 
 ## kills the processes
 #killall dns-sd
