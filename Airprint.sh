@@ -31,9 +31,16 @@ Options=`cat /tmp/"$i"`
 ## A Bonjour browser shos them as advertised but with no "details"
 ## Bonjour browser - http://www.tildesoft.com
 
-TheCommand=`dns-sd -R "$i" _ipp._tcp,_universal . 631"$Options" | tr -d \'\\\\\(\)\" >> /tmp/output.log & sleep 1`
+#TheCommand=`dns-sd -R "$i" _ipp._tcp,_universal . 631"$Options" | tr -d \'\\\\\(\)\" >> /tmp/output.log & sleep 1`
+#$TheCommand
 
-$TheCommand
+
+alias TheCommand="dns-sd -R "\"$i"\" _ipp._tcp,_universal . 631"${Options}"  >> /tmp/output.log & sleep 1" 
+
+TheCommand
+
+
+
 
 done
 IFS=$SAVEIFS
