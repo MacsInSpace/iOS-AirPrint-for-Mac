@@ -28,7 +28,7 @@ done
 
 
 for i in $printers; do
-Options=`cat "$i"`
+Options=`cat /tmp/"$i"`
 
 dns-sd -R "$i" _ipp._tcp,_universal . 631 $Options & sleep 0 &
 
