@@ -24,18 +24,37 @@ killall dns-sd
 done
 
 
-alias TheCommand="dns-sd -R "\"\$i"\" _ipp._tcp,_universal . 631 "$Options" & unalias TheCommand"
+
+
 
 for i in $printers; do
 Options=`cat "$i"`
 
-TheCommand 
+dns-sd -R "$i" _ipp._tcp,_universal . 631 $Options & sleep 0 &
 
 done
 
 
 
 IFS=$SAVEIFS
+
+
+
+
+
+
+#alias TheCommand="dns-sd -R "\"\$i"\" _ipp._tcp,_universal . 631 "$Options" & unalias TheCommand"
+
+#for i in $printers; do
+#Options=`cat "$i"`
+
+#TheCommand 
+
+#done
+
+
+
+#IFS=$SAVEIFS
 
 
 
