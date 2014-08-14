@@ -29,9 +29,11 @@ IFS=$SAVEIFS
 killall dns-sd
 
 Helpful links
+http://www.finnie.org/2010/11/13/airprint-and-linux/
 https://www.sit.auckland.ac.nz/Printing/Sharing_a_printer_to_iOS_from_MacOS
 http://hints.macworld.com/article.php?story=20101027080807322
-
+http://blog.mornati.net/linux-as-airprint-server/
+http://the.taoofmac.com/space/blog/2012/12/15/1830
 
 
 
