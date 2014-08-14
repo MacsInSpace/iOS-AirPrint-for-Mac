@@ -24,9 +24,7 @@ killall dns-sd
 done
 
 
-#I made the following change overnight which seems to advertise them to a Bonjour browser but the ${Options} variable is now not being passed through.
-
-alias TheCommand="dns-sd -R "\"\$i"\" _ipp._tcp,_universal . 631"\${Options}" & unalias TheCommand"
+alias TheCommand="dns-sd -R "\"\$i"\" _ipp._tcp,_universal . 631 "$Options" & unalias TheCommand"
 
 for i in $printers; do
 Options=`cat "$i"`
@@ -40,31 +38,3 @@ done
 IFS=$SAVEIFS
 
 
-
-
-
-
-##NEEDS WORK!!
-## For each printer, advertise via bonjour
-#for i in $printers; do
-#Options=`cat /tmp/"$i"`
-## Works but doesnt.. dns-sd -R "$i" _ipp._tcp,_universal . 631"$Options" | tr -d \'\\\\\(\)\" >> /tmp/output.log & sleep 1
-## A Bonjour browser shos them as advertised but with no "details"
-## Bonjour browser - http://www.tildesoft.com
-
-#TheCommand=`dns-sd -R "$i" _ipp._tcp,_universal . 631"$Options" | tr -d \'\\\\\(\)\" >> /tmp/output.log & sleep 1`
-#$TheCommand
-
-
-#alias TheCommand="dns-sd -R "\"$i"\" _ipp._tcp,_universal . 631"${Options}"  >> /tmp/output.log & sleep 1" 
-
-#TheCommand
-#unalias TheCommand
-
-
-
-#done
-#IFS=$SAVEIFS
-
-## kills the processes
-#killall dns-sd
