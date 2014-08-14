@@ -38,3 +38,13 @@ done
 IFS=$SAVEIFS
 
 
+
+#for i in $printers; do
+#Options=`cat "$i"`
+
+#dns-sd -R "$i" _ipp._tcp,_universal . 631 $Options & sleep 0 &
+
+#done
+
+
+
