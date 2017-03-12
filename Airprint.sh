@@ -19,7 +19,7 @@ printers=`cat /tmp/printerlist.txt`
 ## Adds the urf format and "transparent=T binary=T" settings which I believe are needed
 
 for i in $printers; do
-dns-sd -L "$i" _ipp._tcp local | grep 'product=' | tr -d \'\\\\\(\) | sed "s@pwg-raster@urf URF=W8,SRGB24,CP255,RS300@g" |  sed "s/$/ transparent=T binary=T/" | sed 's/note.*priority/note= priority/g' > /tmp/"$i" & sleep 0 &
+dns-sd -L "$i" _ipp._tcp local | grep 'product=' | sed 's/\\//g' | sed "s@pwg-raster@urf URF=W8,SRGB24,CP255,RS300@g" | sed "s/$/ transparent=T binary=T/" | sed 's/note.*priority/note= priority/g' > /tmp/"$i" & sleep 0 &
 killall dns-sd
 done
 
